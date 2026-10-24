@@ -85,6 +85,8 @@ def mark(img, target):
     draw = ImageDraw.Draw(img)
     for color, w, pad in ((WHITE, 18, 14), (ORANGE, 10, 14)):
         draw.rounded_rectangle((x1 - pad, y1 - pad, x2 + pad, y2 + pad), radius=36, outline=color, width=w)
+    if side is None:  # a frame is enough where an arrow would cover other buttons
+        return
     cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
     gap, length = 30, 230
     if side == "bottom":
@@ -117,4 +119,5 @@ def main():
         print(name)
 
 
-main()
+if __name__ == "__main__":
+    main()
